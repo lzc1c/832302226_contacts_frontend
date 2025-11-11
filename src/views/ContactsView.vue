@@ -91,7 +91,7 @@ export default {
     async loadContacts() {
       this.loading = true
       try {
-        const response = await fetch('http://localhost:8080/api/contacts')
+        const response = await fetch('https://eight32302226-contacts-backend.onrender.com/api/contacts')
         if (response.ok) {
           this.contacts = await response.json()
         } else {
@@ -110,7 +110,7 @@ export default {
         // 表单验证
         await this.$refs.formRef.validate()
 
-        const url = 'http://localhost:8080/api/contacts'
+        const url = 'https://eight32302226-contacts-backend.onrender.com/api/contacts'
         const method = this.editingContact ? 'PUT' : 'POST'
         const fullUrl = this.editingContact ? `${url}/${this.editingContact.id}` : url
 
@@ -142,7 +142,7 @@ export default {
     async handleEdit(contact) {
       try {
         // 关键：从后端重新获取数据，不使用缓存
-        const response = await fetch(`http://localhost:8080/api/contacts/${contact.id}`)
+        const response = await fetch(`https://eight32302226-contacts-backend.onrender.com/api/contacts/${contact.id}`)
         if (response.ok) {
           this.editingContact = await response.json()
           this.contactForm = { ...this.editingContact }
@@ -167,7 +167,7 @@ export default {
           }
         )
 
-        const response = await fetch(`http://localhost:8080/api/contacts/${id}`, {
+        const response = await fetch(`https://eight32302226-contacts-backend.onrender.com/api/contacts/${id}`, {
           method: 'DELETE'
         })
 
